@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apex Invictus - Responsive</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Oswald:wght@700&display=swap" rel="stylesheet">
+    <style>
+        /* Base Styles (Desktop/Large Screen First) */
+        :root {
+            --primary-red: #E7002C;
+            --dark-background: #1A0000;
+            --text-color: #FFFFFF;
+            --light-red: #FF3355;
+            --gray-text: #CCCCCC;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--text-color);
+            background-color: var(--dark-background);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* --- Header Styles --- */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 5%;
+            position: fixed; /* Fixed header */
+            width: 100%;
+            z-index: 100;
+            background-color: rgba(0, 0, 0, 0.9); /* Slight background for visibility over hero */
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo img {
+            height: 40px;
+            margin-right: 10px;
+        }
+
+        .logo h1 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 2em;
+            color: var(--primary-red);
+            text-transform: uppercase;
+        }
+
+        .nav-menu ul {
+            list-style: none;
+            display: flex;
+        }
+
+        .nav-menu ul li {
+            margin-left: 30px;
+        }
+
+        .nav-menu ul li a {
+            color: var(--text-color);
+            text-decoration: none;
+            font-weight: 700;
+            transition: color 0.3s ease;
+        }
+
+        .nav-menu ul li a:hover {
+            color: var(--primary-red);
+        }
+
+        .login-btn {
+            background-color: var(--primary-red);
+            color: var(--text-color);
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 700;
+            transition: background-color 0.3s ease;
+        }
+
+        .login-btn:hover {
+            background-color: var(--light-red);
+        }
+        
+        /* Mobile Menu Button - Hidden by default on Desktop */
+        .menu-toggle {
+            display: none;
+            cursor: pointer;
+            font-size: 30px;
+            color: var(--text-color);
+        }
+
+        /* Hide the mobile login link on desktop */
+        .nav-menu .login-btn-mobile {
+            display: none;
+        }
+
+        /* --- Hero Section Styles --- */
+        .hero-section {
+            position: relative;
+            height: 100vh;
+            padding-top: 80px; /* Offset for fixed header */
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            padding-left: 5%;
+            overflow: hidden;
+            /* Background: Image 2 URL with dark/red gradient overlay */
+            background: linear-gradient(rgba(0,0,0,0.8), rgba(100,0,0,0.6) 50%, rgba(0,0,0,0.8)), 
+                        url('home.jpg') no-repeat center center;
+            background-size: cover;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 600px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+        }
+
+        .hero-content h2 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 3.5em;
+            color: var(--text-color);
+            margin-bottom: 10px;
+        }
+
+        .hero-content h3 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 2.5em;
+            color: var(--primary-red);
+            margin-bottom: 20px;
+        }
+
+        .hero-content p {
+            font-size: 1.1em;
+            margin-bottom: 30px;
+            color: var(--gray-text);
+        }
+
+        .more-info-btn {
+            background-color: transparent;
+            color: var(--text-color);
+            border: 2px solid var(--primary-red);
+            padding: 15px 30px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1em;
+            display: inline-block;
+            transition: background-color 0.3s ease, border-color 0.3s ease;
+        }
+
+        .more-info-btn:hover {
+            background-color: var(--primary-red);
+            border-color: var(--primary-red);
+        }
+
+        /* Character Image (Image 1) - Placeholder URL used for demonstration */
+        .character-image {
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            height: 90%; 
+            max-height: 800px; 
+            z-index: 5;
+            pointer-events: none;
+            /* Using the first uploaded image */
+            content: url('lancelot.png'); 
+        }
+
+        /* Sponsors */
+        .sponsors {
+            position: absolute;
+            bottom: 30px;
+            left: 5%;
+            z-index: 10;
+        }
+
+        .sponsors h4 {
+            font-size: 0.9em;
+            color: var(--gray-text);
+            margin-bottom: 10px;
+        }
+
+        .sponsor-logos {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .sponsor-logos img {
+            height: 30px; 
+            filter: grayscale(100%) brightness(150%);
+            opacity: 0.7;
+            transition: filter 0.3s ease, opacity 0.3s ease;
+        }
+
+        .sponsor-logos img:hover {
+            filter: grayscale(0%) brightness(100%);
+            opacity: 1;
+        }
+
+        /* ==================================== */
+        /* --- MEDIA QUERIES FOR RESPONSIVENESS --- */
+        /* ==================================== */
+
+        /* Tablet View (Max 1024px) */
+        @media (max-width: 1024px) {
+            .hero-content {
+                max-width: 450px;
+            }
+
+            .hero-content h2 {
+                font-size: 2.8em;
+            }
+
+            .hero-content h3 {
+                font-size: 2em;
+            }
+
+            .character-image {
+                height: 65%;
+                max-height: 550px;
+            }
+        }
+
+        /* Mobile View (Max 768px) */
+        @media (max-width: 768px) {
+            .header {
+                padding: 15px 5%;
+            }
+
+            /* Show mobile menu icon and hide desktop navigation */
+            .menu-toggle {
+                display: block;
+            }
+
+            .nav-menu {
+                display: none; /* Hidden by default for mobile */
+                flex-direction: column;
+                position: fixed;
+                top: 70px; /* Below the header */
+                left: 0;
+                width: 100%;
+                height: 100vh; /* Full viewport height for menu */
+                background-color: rgba(0, 0, 0, 0.98); 
+                z-index: 90;
+                padding-top: 20px;
+                overflow-y: auto;
+            }
+
+            .nav-menu.active {
+                display: flex; /* Show when active */
+            }
+
+            .nav-menu ul {
+                flex-direction: column;
+                width: 100%;
+                padding: 0;
+            }
+
+            .nav-menu ul li {
+                margin: 0;
+                text-align: center;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            }
+
+            .nav-menu ul li:last-child {
+                 border-bottom: none;
+            }
+
+            .nav-menu ul li a {
+                display: block;
+                padding: 15px 0;
+                font-size: 1.2em;
+            }
+            
+            /* Show mobile login link inside the menu, hide desktop login button */
+            .nav-menu .login-btn-mobile {
+                display: block;
+                margin: 20px auto;
+                width: 80%;
+                max-width: 300px;
+                text-align: center;
+            }
+
+            .login-btn-desktop {
+                display: none;
+            }
+
+            /* Hero Content positioning */
+            .hero-section {
+                padding-top: 100px; 
+                justify-content: center;
+                text-align: center;
+                padding-left: 0;
+                height: auto; /* Adjust height based on content */
+                min-height: 100vh;
+            }
+            
+            .hero-content {
+                max-width: 90%;
+                padding-bottom: 250px; /* Space for sponsors/faded image */
+            }
+
+            .hero-content h2 {
+                font-size: 2em;
+            }
+
+            .hero-content h3 {
+                font-size: 1.5em;
+            }
+
+            .hero-content p {
+                font-size: 0.9em;
+            }
+
+            /* Character Image - Faded and centered */
+            .character-image {
+                opacity: 0.2; 
+                height: 40%;
+                left: 50%;
+                transform: translateX(-50%);
+                bottom: 0;
+                z-index: 1;
+                max-height: none;
+            }
+
+            /* Sponsors - Reposition and center */
+            .sponsors {
+                position: absolute; 
+                bottom: 20px;
+                left: 0;
+                width: 100%;
+                text-align: center;
+                padding: 0 5%;
+                z-index: 10; 
+            }
+            
+            .sponsor-logos {
+                justify-content: center;
+                gap: 15px;
+            }
+
+            .sponsor-logos img {
+                height: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="logo">
+            <img src="logo-placeholder.png" alt="Apex Invictus Logo"> 
+            <h1>Apex Invictus</h1>
+        </div>
+        <nav class="nav-menu" id="navMenu">
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Team</a></li>
+                <li><a href="#">Contact</a></li>
+                <li><a href="#" class="login-btn login-btn-mobile">Log In</a></li> </ul>
+        </nav>
+        <a href="#" class="login-btn login-btn-desktop">Log In</a> 
+        <div class="menu-toggle" id="menuToggle">&#9776;</div> 
+    </header>
+
+    <main class="hero-section">
+        <div class="hero-content">
+            <h2>Apex Invictus</h2>
+            <h3>RISING BEYOND VICTORY</h3>
+            <p>We are Apex Invictus - the unstoppable rising esport team in Philippines. Born from passion, forged in competition, and destined for greatness.</p>
+            <a href="#" class="more-info-btn">More Info</a>
+        </div>
+        <div class="character-image" alt="Hero Character"></div> 
+        <div class="sponsors">
+            <h4>Our Sponsors</h4>
+            <div class="sponsor-logos">
+                <img src="sponsor-1-placeholder.png" alt="Sponsor 1 Logo"> 
+                <img src="sponsor-2-placeholder.png" alt="Sponsor 2 Logo"> 
+                <img src="sponsor-3-placeholder.png" alt="Sponsor 3 Logo"> 
+            </div>
+        </div>
+    </main>
+    
+    <script>
+        // --- JavaScript for Mobile Menu Toggle ---
+        const menuToggle = document.getElementById('menuToggle');
+        const navMenu = document.getElementById('navMenu');
+
+        menuToggle.addEventListener('click', () => {
+            // Toggles the 'active' class to show/hide the menu
+            navMenu.classList.toggle('active');
+        });
+    </script>
+</body>
+</html>

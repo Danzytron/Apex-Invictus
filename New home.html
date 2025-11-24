@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>APEX – Apex Invictus — Rising Esports Team in Philippines</title> 
+    
+    <link rel="icon" type="image/png" href="apex.png">
+    <link rel="shortcut icon" href="apex.png">
+    
+    <meta name="description" content="Apex Invictus is the rising professional esports team in the Philippines. Visit our official page for matches, team rosters, and the latest news. RISING BEYOND VICTORY.">
+    
+    <link rel="canonical" href="https://www.apexinvictus.site/index.html">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,400;0,600;0,700;0,900;1,900&display=swap" rel="stylesheet">
+    
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Apex Invictus Esports",
+      "url": "https://www.apexinvictus.site/index.html",
+      "description": "Apex Invictus is the rising professional esports team in the Philippines. Visit our official page for matches, team rosters, and the latest news.",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "breadcrumb": {
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Home",
+              "item": "https://www.apexinvictus.site/index.html",
+              "description": "Visit our official homepage for the latest news, announcements, and team updates."
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "About",
+              "item": "https://www.apexinvictus.site/about%20us.html",
+              "description": "Learn about our mission, vision,  team history, and the management behind Apex Invictus."
+            },
+            {
+              "@type": "ListItem",
+              "position": 3,
+              "name": "Team",
+              "item": "https://www.apexinvictus.site/team.html",
+              "description": "Meet our professional rosters for Mobile Legends: Bang Bang and Call of Duty: Mobile."
+            },
+            {
+              "@type": "ListItem",
+              "position": 4,
+              "name": "Contact",
+              "item": "https://www.apexinvictus.site/contact%20us.html",
+              "description": "Get in touch with Apex Invictus"
+            }
+          ]
+        }
+      }
+    }
+    </script>
+    
+    <style>
+        :root {
+            --primary-red: #E7002C; /* Bright Red */
+            --section-red: #A20000; /* Dark Red (Top of Achievements) */
+            --dark-background: #1A0000;
+            --solid-black: #000000; /* Bottom of Matches/Top of Footer transition */
+            --footer-bg: #111827; /* Footer specific background color */
+            --text-color: #FFFFFF;
+            --gray-text: #CCCCCC;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Figtree', sans-serif;
+            color: var(--text-color);
+            background-color: var(--dark-background);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--text-color);
+        }
+
+        /* --- 2. Header (Navigation) Styles (Desktop First) --- */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 5%;
+            /* Fixed position is maintained */
+            position: fixed; 
+            width: 100%;
+            z-index: 100;
+            background-color: rgba(0, 0, 0, 0.9);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+        }
+
+        .logo { display: flex; align-items: center; }
+        .logo img { height: 40px; margin-right: 10px; }
+        
+        .logo h1 { 
+            font-family: 'Figtree', sans-serif;
+            font-size: 2em; 
+            color: var(--text-color); 
+            text-transform: capitalize; 
+            font-style: italic; /* Match 'About Us' style */
+            font-weight: 900; /* Match 'About Us' style */
+        }
+        .logo h1 .red-text {
+            color: var(--primary-red);
+        }
+
+        .nav-menu ul { 
+            list-style: none; 
+            display: flex; 
+            gap: 40px; /* Increased gap between menu items */
+            padding-right: 20px; /* Added some right padding to overall menu for better spacing */
+        }
+        .nav-menu ul li { margin-left: 0; } /* Reset individual margin-left as gap handles spacing */
+        
+        .nav-menu ul li a { 
+            color: var(--text-color); 
+            font-weight: 700; 
+            font-size: 1.25em; /* Significantly bigger text */
+            padding: 15px 0; /* Vertical padding to make links "taller" - no horizontal padding as gap handles spacing */
+            display: block; 
+            transition: color 0.3s ease; /* Only color transition for subtle hover */
+        }
+        
+        /* Highlight 'Home' link for this page */
+        .nav-menu ul li:first-child a { 
+             color: var(--primary-red);
+        }
+
+        .nav-menu ul li a:hover { 
+            color: var(--primary-red); /* Hover effect */
+            background-color: transparent; 
+            border-radius: 0; 
+        }
+
+        /* Login button styles (now unused, but kept separate) */
+        .login-btn {
+            background-color: var(--primary-red);
+            color: var(--text-color);
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-weight: 700;
+            transition: background-color 0.3s ease;
+            white-space: nowrap;
+        }
+        .login-btn:hover {
+            background-color: var(--section-red);
+        }
+        
+        /* Mobile menu elements hidden by default */
+        .menu-toggle { display: none; }
+        .nav-menu .login-btn-mobile { display: none; }
+        
+        /* Menu Toggle Button Styling (Refinement) - COPIED FROM ABOUT US */
+        .menu-toggle {
+            cursor: pointer;
+            font-size: 1.5em;
+            padding: 5px 10px;
+            border: 2px solid var(--primary-red);
+            border-radius: 5px;
+            line-height: 1;
+            transition: background-color 0.3s;
+        }
+        .menu-toggle:hover {
+            background-color: var(--primary-red);
+        }
+
+
+        /* --- 3. Hero Section Styles --- */
+        .hero-section {
+            position: relative;
+            height: 100vh;
+            padding-top: 80px; 
+            display: flex;
+            align-items: center; 
+            justify-content: flex-start;
+            padding-left: 5%;
+            overflow: hidden;
+            
+            background: 
+                linear-gradient(rgba(0,0,0,0.8), rgba(100,0,0,0.6) 50%, rgba(0,0,0,0.8)), 
+                url('home.jpg') no-repeat center center; 
+            background-size: cover;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 600px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+            margin-top: 0; 
+        }
+        
+        .hero-content p {
+            margin-bottom: 20px; 
+        }
+
+        .hero-content h2 { font-weight: 900; font-size: 3.5em; color: var(--text-color); margin-bottom: 10px; }
+        .hero-content h3 { font-weight: 900; font-size: 2.5em; color: var(--primary-red); margin-bottom: 20px; }
+
+        .more-info-btn {
+            background-color: transparent;
+            color: var(--text-color);
+            border: 2px solid var(--primary-red);
+            padding: 12px 25px; 
+            border-radius: 5px;
+            font-weight: 700;
+            font-size: 1.0em; 
+            display: inline-block;
+            transition: background-color 0.3s ease;
+        }
+        .more-info-btn:hover { 
+            background-color: var(--primary-red); 
+        }
+        
+        .sponsors {
+            position: absolute;
+            bottom: 0; 
+            left: 0;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start; 
+            padding: 30px 5%;
+            z-index: 10;
+            background: none; 
+        }
+
+        .sponsors h4 { font-size: 0.9em; color: var(--gray-text); margin-bottom: 15px; }
+        .sponsor-logos { display: flex; align-items: center; gap: 30px; flex-wrap: wrap; }
+        
+        .sponsor-logos img { 
+            height: 35px; 
+            filter: none; 
+            opacity: 1; 
+        }
+        
+        /* --- 4. Achievements & Matches Section (Shared Gradient) --- */
+        .mid-content-wrap {
+            /* Smooth transition from red in the middle to black at the bottom */
+            background: linear-gradient(to top, var(--solid-black) 0%, var(--section-red) 100%);
+        }
+        
+        .section-padding { /* New utility class for cleaner mobile adjustments */
+            padding: 40px 5%; 
+            max-width: 1200px; 
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .achievements-section {
+            padding: 80px 5% 40px; 
+            text-align: center;
+            max-width: 1200px; /* Constrain content width */
+            margin: 0 auto;
+        }
+
+        .achievements-section h2 { 
+            font-weight: 900; 
+            font-size: 2.5em; 
+            color: var(--text-color); 
+            margin-bottom: 40px; 
+        }
+        
+        .stats-grid { 
+            display: flex; 
+            justify-content: space-around; 
+            max-width: 900px; 
+            margin: 0 auto 50px auto; 
+        }
+        .stat-item h3 { font-weight: 900; font-size: 3.5em; color: var(--primary-red); }
+        .stat-item p { color: var(--gray-text); font-size: 1em; text-transform: uppercase; font-weight: 700; }
+
+        .matches-section {
+            padding: 40px 5% 80px; 
+            text-align: center;
+            max-width: 1200px; /* Constrain content width */
+            margin: 0 auto;
+        }
+
+        .matches-section h2 { font-weight: 900; font-size: 2.5em; color: var(--text-color); margin-bottom: 40px; }
+        .matches-section h2 .red-text { color: var(--primary-red); }
+
+        .match-cards { 
+            display: flex; 
+            justify-content: center; 
+            gap: 30px; 
+            flex-wrap: wrap; 
+        }
+        .match-card {
+            background-color: #0D0000;
+            border: 2px solid var(--primary-red);
+            border-radius: 8px;
+            padding: 20px;
+            width: 300px;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .match-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(231, 0, 44, 0.4);
+        }
+        /* Custom styling for the second card (e.g., to highlight a win/loss) */
+        .match-card:nth-child(2) { 
+            border-color: var(--text-color); /* Highlight card (e.g. for a win) */
+        } 
+        .score { 
+            font-weight: 900; 
+            font-size: 2.5em; 
+            margin-bottom: 10px; 
+            display: flex; 
+            align-items: center; 
+            justify-content: space-around; /* Distribute space evenly */
+            gap: 5px; /* Reduced gap for better logo-score relationship */
+        }
+        
+        .score img {
+            height: 50px; 
+            width: auto; 
+            pointer-events: none; 
+            user-select: none; 
+        }
+        
+        /* Match score is set to white (as per the previous request) */
+        .team-score { 
+            color: var(--text-color); 
+            font-size: 1em; /* Make score proportional to team name/logo */
+            margin: 0 10px; /* Add space around the score */
+        } 
+        
+        .match-date { color: var(--gray-text); font-size: 0.8em; }
+
+        /* --- 5. Footer Styles (UPDATED) --- */
+        .footer {
+            /* Using --footer-bg instead of undefined --dark-gray-bg */
+            background-color: var(--footer-bg); 
+            padding: 30px 5%; 
+            font-size: 0.8em; 
+            z-index: 50; /* Added from your new instruction */
+            position: relative; /* Added from your new instruction */
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr; 
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding-bottom: 20px; 
+            margin-bottom: 15px; 
+        }
+        
+        .footer-logo-info h3 { font-weight: 900; color: var(--text-color); margin-bottom: 5px; font-size: 1.5em; }
+        .footer-logo-info p { font-size: 0.9em; color: var(--gray-text); }
+        .footer-logo-info h3 .red-text { color: var(--primary-red); }
+        
+        .footer-column h4 { font-size: 1em; margin-bottom: 10px; color: var(--primary-red); }
+        .footer-column ul { list-style: none; }
+        .footer-column ul li a { color: var(--gray-text); display: block; margin-bottom: 5px; transition: color 0.2s; font-size: 0.9em; }
+        .footer-column ul li a:hover { color: var(--primary-red); }
+
+        .social-icons {
+            display: flex;
+            gap: 15px; 
+        }
+        .social-icons img {
+            height: 24px;
+            width: auto;
+            opacity: 0.8;
+            transition: opacity 0.2s;
+        }
+        .social-icons a:hover img {
+            opacity: 1;
+        }
+
+        .footer-bottom { text-align: center; color: var(--gray-text); font-size: 0.8em; }
+
+
+        /* ------------------------------------------- */
+        /* --- 6. Media Queries (Responsiveness) --- */
+        /* ------------------------------------------- */
+
+        /* --- Tablet & Smaller Desktop (max-width: 1024px) --- */
+        @media (max-width: 1024px) {
+            .hero-content h2 { font-size: 3em; }
+            .hero-content h3 { font-size: 2em; }
+            
+            .stats-grid {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 30px;
+            }
+            .stat-item {
+                flex-basis: 40%;
+                min-width: 150px;
+            }
+            
+            /* Footer columns change on tablet, keeping logo left-aligned with content */
+             .footer-content { 
+                grid-template-columns: 1.5fr 1fr 1fr; /* Adjusted for better logo/info spacing */
+                gap: 30px; 
+                text-align: left;
+            }
+            .footer-logo-info { 
+                grid-column: span 1; /* Retain original column span */
+                text-align: left;
+            }
+            
+        }
+
+
+        /* --- Mobile (max-width: 768px) (UPDATED FOOTER LOGIC) --- */
+        @media (max-width: 768px) {
+            
+            /* Navigation Toggle */
+            .menu-toggle { display: block; }
+
+            /* COPIED FROM ABOUT US - This handles the dropdown effect */
+            .nav-menu { 
+                display: none; 
+                flex-direction: column; 
+                position: fixed; 
+                top: 80px; 
+                left: 0; 
+                width: 100%; 
+                background-color: rgba(0, 0, 0, 0.98); 
+                z-index: 90; 
+                padding-top: 20px; 
+                padding-bottom: 20px; 
+                overflow-y: auto; 
+            }
+            .nav-menu.active { display: flex; } /* Show menu when active */
+            
+            /* Redefine UL structure for mobile */
+            .nav-menu ul { 
+                flex-direction: column; 
+                width: 100%; 
+                padding: 0;
+                gap: 0; /* Important: reset gap on mobile */
+            }
+            .nav-menu ul li { margin: 0; text-align: center; border-bottom: 1px solid rgba(255, 255, 255, 0.1); }
+            .nav-menu ul li a { display: block; padding: 15px 0; font-size: 1.2em; }
+
+            /* Hero Section Adjustments */
+            .hero-section { 
+                align-items: center; 
+                justify-content: center; 
+                text-align: center;
+                padding-left: 0;
+                padding-bottom: 100px; 
+            }
+            .hero-content { margin-top: 0; max-width: 90%; padding: 0 5%; }
+            .hero-content h2 { font-size: 2.5em; }
+            .hero-content h3 { font-size: 1.8em; }
+            
+            .sponsors {
+                align-items: center; 
+                padding: 20px 5%;
+            }
+            .sponsors h4 { text-align: center; width: 100%; }
+            .sponsor-logos { justify-content: center; gap: 15px; }
+            .sponsor-logos img {
+                height: 30px; 
+            }
+
+            /* Achievements/Stats */
+            .stats-grid { 
+                flex-direction: column; 
+                gap: 30px;
+            }
+            .stat-item {
+                flex-basis: auto;
+            }
+            
+            /* Matches Section */
+            .match-card {
+                width: 100%; 
+                max-width: 350px;
+            }
+
+            /* FOOTER ADJUSTMENT FOR MOBILE (New 2-column layout) */
+            .footer-content { 
+                grid-template-columns: 1fr 1fr; 
+                gap: 30px;
+                text-align: left; /* Default left align */
+            }
+            .footer-logo-info { 
+                grid-column: 1 / span 2; 
+                text-align: left; 
+                padding-bottom: 20px;
+            }
+            .footer-logo-info .logo { justify-content: flex-start; } 
+            
+            /* Social icons are left-aligned inside their column on 768px */
+            .social-icons {
+                justify-content: flex-start;
+            }
+        }
+        
+        /* --- Small Mobile (max-width: 480px) (NEW) --- */
+        @media (max-width: 480px) {
+            .header { padding: 15px 4%; }
+            .logo img { height: 35px; }
+            .logo h1 { font-size: 1.8em; }
+            
+            /* FOOTER ADJUSTMENT for very small screens (Single Column, Centered) */
+            .footer-content { 
+                grid-template-columns: 1fr; 
+                gap: 20px; 
+                text-align: center; /* Center all text */
+            }
+            .footer-logo-info {
+                grid-column: auto; 
+            }
+            .footer-logo-info .logo { justify-content: center; } 
+            .footer-column {
+                grid-column: auto;
+            }
+            /* Center social icons on very small mobile */
+            .social-icons {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="logo">
+            <img src="apex.png" alt="Apex Invictus Logo"> 
+            <h1 style="font-style: italic; font-weight: 900;">Apex <span class="red-text">Invictus</span></h1>
+        </div>
+        <nav class="nav-menu" id="navMenu">
+            <ul>
+                <li><a href="New home.html">Home</a></li> 
+                <li><a href="about us.html">About</a></li>
+                <li><a href="team.html">Team</a></li>
+                <li><a href="contact us.html">Contact</a></li>
+            </ul>
+        </nav>
+        <div class="menu-toggle" id="menuToggle">&#9776;</div> 
+    </header>
+
+    <main class="hero-section">
+        <div class="hero-content">
+            <h2>Apex Invictus</h2>
+            <h3>RISING BEYOND VICTORY</h3>
+            <p>We are Apex Invictus - the unstoppable rising esport team in Philippines. Born from passion, forged in competition, and destined for greatness.</p>
+            <a href="about us.html" class="more-info-btn">More Info</a>
+        </div>
+        
+        <div class="sponsors">
+            <h4>Our Sponsors</h4>
+            <div class="sponsor-logos">
+                <img src="grab.png" alt="Sponsor 1 Logo"> 
+                <img src="infinix.png" alt="Sponsor 2 Logo"> 
+                <img src="rog.png" alt="Sponsor 3 Logo"> 
+            </div>
+        </div>
+    </main>
+    
+    <div class="mid-content-wrap">
+        <section class="achievements-section">
+            <h2>ACHIEVEMENTS IN OUR JOURNEY</h2>
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <h3>126</h3>
+                    <p>Matches Won</p>
+                </div>
+                <div class="stat-item">
+                    <h3>4</h3>
+                    <p>Championships</p>
+                </div>
+                <div class="stat-item">
+                    <h3>2.5M</h3>
+                    <p>Followers</p>
+                </div>
+                <div class="stat-item">
+                    <h3>#9</h3>
+                    <p>Country Ranking</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="matches-section">
+            <h2>RECENT <span class="red-text">MATCHES</span></h2>
+            <div class="match-cards">
+                <div class="match-card">
+                    <div class="score">
+                        <img src="rrq.png" alt="Team RRQ Logo">
+                        <span class="team-score">1 - 2</span> 
+                        <img src="apex.png" alt="Apex Invictus Logo">
+                    </div>
+                    <div class="match-date">November 26, 2025</div>
+                </div>
+                
+                <div class="match-card">
+                    <div class="score">
+                        <img src="tlph.png" alt="Team TLPH Logo">
+                        <span class="team-score">2 - 0</span> 
+                        <img src="apex.png" alt="Apex Invictus Logo">
+                    </div>
+                    <div class="match-date">November 25, 2025</div>
+                </div>
+
+                <div class="match-card">
+                    <div class="score">
+                        <img src="tnc.png" alt="Team TNC Logo">
+                        <span class="team-score">0 - 2</span> 
+                        <img src="apex.png" alt="Apex Invictus Logo">
+                    </div>
+                    <div class="match-date">November 27, 2025</div>
+                </div>
+            </div>
+        </section>
+    </div>
+    
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-logo-info">
+                <div class="logo">
+                    <img src="apex.png" alt="Apex Invictus Logo" style="height: 25px;">
+                    <h3 style="font-size: 1.5em;">Apex <span class="red-text">Invictus</span></h3>
+                </div>
+                <p>Professional esports team dedicated to dominating the competitive gaming scene.</p>
+            </div>
+            
+            <div class="footer-column">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about us.html">About Us</a></li>
+                    <li><a href="contact us.html">Contact Us</a></li>
+                    <li><a href="team.html">Team</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column">
+                <h4>Follow Us</h4>
+                <div class="social-icons">
+                    <a href="#"><img src="instagram-placeholder.png" alt="Instagram"></a>
+                    <a href="https://www.facebook.com/share/1C4v3GBZcZ/"><img src="facebook-placeholder.png" alt="Facebook"></a>
+                    <a href="#"><img src="twitch-placeholder.png" alt="Twitch"></a>
+                </div>
+            </div>
+            
+        </div>
+        <div class="footer-bottom">
+            &copy; 2025 Apex Invictus Esports. All rights reserved
+        </div>
+    </footer>
+    
+    <script>
+        // --- JavaScript for Mobile Menu Toggle ---
+        const menuToggle = document.getElementById('menuToggle');
+        const navMenu = document.getElementById('navMenu');
+
+        menuToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+        });
+
+        // OPTIONAL: Close menu when a link is clicked (good practice)
+        document.querySelectorAll('.nav-menu a').forEach(item => {
+            item.addEventListener('click', () => {
+                // Delay slightly to allow navigation before closing
+                setTimeout(() => {
+                    navMenu.classList.remove('active');
+                }, 100); 
+            });
+        });
+    </script>
+</body>
+</html>

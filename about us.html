@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apex Invictus - About Us</title>
+    <link rel="icon" type="image/png" href="apex.png"> 
+    <link rel="shortcut icon" href="apex.png">
+    <link href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,400;0,600;0,700;0,900;1,900&display=swap" rel="stylesheet">
+    <style>
+        /* --- 1. CSS Variables and Reset --- */
+        :root {
+            --primary-red: #D40000; 
+            --section-red: #A20000; 
+            --dark-background: #1A0000;
+            --solid-black: #000000; 
+            --solid-white: #FFFFFF;
+            --dark-gray-bg: #111827; 
+            --text-color: #FFFFFF;
+            --gray-text: #CCCCCC;
+        }
+
+        /* 💥 AGGRESSIVE FIX: Targetting html and body to remove stubborn spacing */
+        html, body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+        }
+
+        /* CRITICAL FIX: Universal reset to eliminate ALL browser margins */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Figtree', sans-serif;
+            color: var(--text-color);
+            background-color: var(--dark-background);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--text-color);
+        }
+
+        /* --- 2. Header (Navigation) Styles --- */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 5%;
+            position: fixed;
+            width: 100%;
+            z-index: 1000; 
+            top: 0;
+            left: 0;
+            background-color: var(--solid-black); 
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.7); 
+        }
+
+        .logo { 
+            display: flex; 
+            align-items: center; 
+        }
+        .logo img { 
+            height: 40px; 
+            margin-right: 10px; 
+        }
+        
+        .logo h1 { 
+            font-family: 'Figtree', sans-serif;
+            font-size: 2em; 
+            color: var(--text-color); 
+            text-transform: capitalize; 
+            font-style: italic;
+            font-weight: 900;
+            margin: 0; 
+            padding: 0; 
+        }
+        .logo h1 .red-text {
+            color: var(--primary-red);
+        }
+
+        .nav-menu ul { 
+            list-style: none; 
+            display: flex; 
+            gap: 40px; 
+            padding-right: 20px; 
+        }
+        .nav-menu ul li { margin-left: 0; } 
+        
+        .nav-menu ul li a { 
+            color: var(--text-color); 
+            font-weight: 700; 
+            font-size: 1.25em; 
+            padding: 15px 0; 
+            display: block;
+            transition: color 0.3s ease; 
+        }
+        
+        /* Highlight 'About' link for this page */
+        .nav-menu ul li a[href="about us.html"] { 
+            color: var(--primary-red); 
+        } 
+        
+        .nav-menu ul li a:hover { 
+            color: var(--primary-red); 
+            background-color: transparent; 
+            border-radius: 0; 
+        }
+        
+
+        .menu-toggle {
+            display: none; 
+            cursor: pointer;
+            font-size: 1.5em;
+            padding: 5px 10px;
+            border: 2px solid var(--primary-red);
+            border-radius: 5px;
+            line-height: 1;
+            transition: background-color 0.3s;
+        }
+        .menu-toggle:hover {
+            background-color: var(--primary-red);
+        }
+
+
+        /* --- 3. About Section Styles --- */
+        .about-section {
+            min-height: 100vh; 
+            padding-top: 100px; 
+            padding-bottom: 50px; 
+            
+            background: 
+                linear-gradient(rgba(0,0,0,0.8), rgba(100,0,0,0.6) 50%, rgba(0,0,0,0.8)), 
+                url('back.jpeg') no-repeat center center; 
+            background-size: cover; 
+
+            position: relative; 
+            z-index: 1; 
+            
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+        }
+        
+        .about-content-wrap {
+            max-width: 900px; 
+            margin: 0 auto;
+            padding-left: 5%;
+            padding-right: 5%;
+            display: flex;
+            flex-direction: column; 
+            align-items: center; 
+            text-align: center; 
+            gap: 20px; 
+        }
+
+        .about-text {
+            flex: 1; 
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7); 
+            width: 100%; 
+        }
+        
+        .about-text h2 {
+            font-weight: 900;
+            font-size: 3em; 
+            color: var(--primary-red); 
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+            text-transform: uppercase;
+            text-align: left; 
+        }
+
+        .about-text h3 {
+            font-weight: 700;
+            font-size: 2em; 
+            color: var(--text-color); 
+            margin-top: 20px; 
+            margin-bottom: 10px;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+            text-align: left; 
+        }
+
+        .about-text p {
+            color: var(--gray-text);
+            margin-bottom: 15px;
+            font-size: 1.1em; 
+            max-width: 900px;
+            margin-left: 0; 
+            margin-right: 0; 
+            text-align: left; 
+        }
+
+
+        /* --- 4. Our Values Section --- */
+        .values-section {
+            margin-top: -1px; 
+            background: linear-gradient(to top, var(--solid-black) 0%, var(--section-red) 100%); 
+            padding: 80px 5%;
+            text-align: center;
+        }
+
+        .values-section h2 { 
+            font-weight: 900; 
+            font-size: 2.5em; 
+            color: var(--text-color); 
+            margin-bottom: 10px; 
+        }
+        .values-section h2 .red-text {
+            color: var(--primary-red);
+        }
+        .values-section p.subtitle {
+            color: var(--gray-text);
+            font-size: 1.0em;
+            margin-bottom: 50px;
+        }
+
+        .values-grid {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        .value-card {
+            background-color: #0D0000;
+            border: 2px solid var(--primary-red);
+            border-radius: 8px;
+            padding: 30px;
+            width: 300px;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .value-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(212, 0, 0, 0.4); 
+        }
+
+        .value-card h3 {
+            font-weight: 900;
+            font-size: 1.5em;
+            color: var(--primary-red);
+            margin-bottom: 10px;
+        }
+        
+        .value-card h3::before {
+            content: "✓";
+            color: var(--text-color);
+            margin-right: 8px;
+            font-size: 1.2em;
+        }
+
+        .value-card p {
+            color: var(--gray-text);
+        }
+
+
+        /* --- 5. Footer Styles --- */
+        .footer {
+            /* CHANGED FOOTER BACKGROUND TO A DARK GRAY COLOR: #111827 */
+            background-color: var(--dark-gray-bg);
+            padding: 30px 5%;
+            font-size: 0.8em;
+            z-index: 50;
+            position: relative;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding-bottom: 20px;
+            margin-bottom: 15px;
+        }
+        
+        .footer-logo-info h3 { font-weight: 900; color: var(--text-color); margin-bottom: 5px; font-size: 1.5em; }
+        .footer-logo-info p { font-size: 0.9em; color: var(--gray-text); }
+        .footer-logo-info h3 .red-text { 
+            color: var(--primary-red); 
+        }
+        
+        .footer-column h4 { 
+            font-size: 1em; 
+            margin-bottom: 10px; 
+            color: var(--primary-red); 
+        }
+        .footer-column ul { list-style: none; }
+        .footer-column ul li a { color: var(--gray-text); display: block; margin-bottom: 5px; transition: color 0.2s; font-size: 0.9em; }
+        .footer-column ul li a:hover { 
+            color: var(--primary-red); 
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 15px; 
+        }
+        .social-icons img {
+            height: 24px;
+            width: auto;
+            opacity: 0.8;
+            transition: opacity 0.2s;
+        }
+        .social-icons a:hover img {
+            opacity: 1;
+        }
+
+        .footer-bottom { text-align: center; color: var(--gray-text); font-size: 0.8em; }
+
+
+        /* ------------------------------------------- */
+        /* --- 6. Media Queries (Responsive Adjustments) --- */
+        /* ------------------------------------------- */
+
+        /* --- Tablet & Smaller Desktop (max-width: 1024px) --- */
+        @media (max-width: 1024px) {
+            
+            .about-text h2 { font-size: 2.5em; }
+            .about-text h3 { font-size: 1.8em; }
+            
+            /* --- UPDATED FOOTER LAYOUT FOR 1024px --- */
+            .footer-content { 
+                grid-template-columns: 1fr 1fr; /* Two columns */
+                gap: 30px; 
+                text-align: left; /* Added from your new style */
+            }
+            .footer-logo-info { 
+                grid-column: 1 / 3; /* Spans both columns */
+                text-align: left;
+                padding-bottom: 20px; /* Separator padding */
+            }
+            /* Ensures logo text is left-aligned within the full-width column */
+            .footer-logo-info .logo { 
+                justify-content: flex-start; 
+            }
+            .footer-column { 
+                /* Removed old specific grid-column/text-align that was conflicting */
+                grid-column: auto;
+            }
+            /* --- END UPDATED FOOTER LAYOUT --- */
+            
+        }
+
+
+        /* --- Mobile (max-width: 768px) --- */
+        @media (max-width: 768px) {
+            
+            /* Navigation Toggle */
+            .menu-toggle { display: block; }
+
+            /* COPIED FROM ABOUT US - This handles the dropdown effect */
+            .nav-menu { 
+                display: none; 
+                flex-direction: column; 
+                position: fixed; 
+                top: 80px; 
+                left: 0; 
+                width: 100%; 
+                background-color: rgba(0, 0, 0, 0.98); 
+                z-index: 90; 
+                padding-top: 20px; 
+                padding-bottom: 20px; 
+                overflow-y: auto; 
+            }
+            .nav-menu.active { display: flex; } /* Show menu when active */
+            
+            /* Redefine UL structure for mobile */
+            .nav-menu ul { 
+                flex-direction: column; 
+                width: 100%; 
+                padding: 0;
+                gap: 0; /* Important: reset gap on mobile */
+            }
+            .nav-menu ul li { margin: 0; text-align: center; border-bottom: 1px solid rgba(255, 255, 255, 0.1); }
+            .nav-menu ul li a { display: block; padding: 15px 0; font-size: 1.2em; }     
+            
+            /* FOOTER ADJUSTMENT FOR MOBILE */
+            .footer-content { 
+                grid-template-columns: 1fr 1fr; 
+                gap: 30px;
+            }
+            .footer-logo-info { 
+                grid-column: 1 / span 2; 
+                text-align: left; 
+                padding-bottom: 20px; 
+            }
+        }
+        
+        /* --- Small Mobile (max-width: 480px) --- */
+        @media (max-width: 480px) {
+            .header { padding: 15px 4%; }
+            .logo img { height: 35px; }
+            .logo h1 { font-size: 1.8em; }
+            
+            /* FOOTER ADJUSTMENT for very small screens */
+            .footer-content { 
+                grid-template-columns: 1fr; 
+                gap: 20px; 
+            }
+            .footer-logo-info {
+                grid-column: auto; 
+            }
+            .footer-column {
+                grid-column: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="logo">
+            <img src="apex.png" alt="Apex Invictus Logo"> 
+            <h1 style="font-style: italic; font-weight: 900;">Apex <span class="red-text">Invictus</span></h1>
+        </div>
+        <nav class="nav-menu" id="navMenu">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about us.html">About</a></li>
+                <li><a href="team.html">Team</a></li>
+                <li><a href="contact us.html">Contact</a></li>
+            </ul>
+        </nav>
+        <div class="menu-toggle" id="menuToggle">&#9776;</div>
+    </header>
+
+    <main class="about-section">
+        <div class="about-content-wrap">
+            <div class="about-text">
+                <h2>ABOUT US</h2>
+                
+                <h3>Team History</h3>
+                <p>Founded in 2022 by a group of passionate Mobile Legends players, Apex Invictus emerged from the competitive scene with a singular vision: to dominate through innovative strategies and unwavering teamwork. What started as five friends grinding ranked matches has evolved into one of the most formidable esports organizations in the region.</p>
+                <p>Our journey began in local tournaments, where we quickly made our mark with innovative strategies and clutch performances. Within two years, we've climbed the ranks to compete in major championships, establishing ourselves as a force to be reckoned with in the Mobile Legends professional scene.</p>
+                
+                <h3>Our Vision</h3>
+                <p>To be the premier esports team in Southeast Asia, known not only for our championship wins but also for setting the highest standards of sportsmanship, professionalism, and dedication within the gaming community.</p>
+            </div>
+        </div>
+    </main>
+    
+    <section class="values-section">
+        <h2>OUR <span class="red-text">VALUES</span></h2>
+        <p class="subtitle">The pillars that define our team's spirit and commitment to the esports community.</p>
+        <div class="values-grid">
+            <div class="value-card">
+                <h3>Teamwork</h3>
+                <p>Collaboration and mutual support are the core of our strategy, ensuring seamless execution in every match.</p>
+            </div>
+            <div class="value-card">
+                <h3>Discipline</h3>
+                <p>We maintain rigorous practice schedules and strategic preparation, essential for competitive longevity.</p>
+            </div>
+            <div class="value-card">
+                <h3>Innovation</h3>
+                <p>Constantly developing new strategies and adapting to the evolving meta is key to staying ahead.</p>
+            </div>
+        </div>
+    </section>
+
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-logo-info">
+                <div class="logo">
+                    <img src="apex.png" alt="Apex Invictus Logo" style="height: 25px;">
+                    <h3 style="font-size: 1.5em;">Apex <span class="red-text">Invictus</span></h3>
+                </div>
+                <p>Professional esports team dominating the competitive gaming scene.</p> 
+            </div>
+            
+            <div class="footer-column">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about us.html">About Us</a></li>
+                    <li><a href="contact us.html">Contact Us</a></li>
+                    <li><a href="team.html">Team</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column">
+                <h4>Follow Us</h4>
+                <div class="social-icons">
+                    <a href="#"><img src="instagram-placeholder.png" alt="Instagram"></a>
+                    <a href="https://www.facebook.com/share/1C4v3GBZcZ/"><img src="facebook-placeholder.png" alt="Facebook"></a>
+                    <a href="#"><img src="twitch-placeholder.png" alt="Twitch"></a>
+                </div>
+            </div>
+            
+        </div>
+        <div class="footer-bottom">
+            &copy; 2025 Apex Invictus Esports. All rights reserved
+        </div>
+    </footer>
+    
+    <script>
+        // --- JavaScript for Mobile Menu Toggle ---
+        const menuToggle = document.getElementById('menuToggle');
+        const navMenu = document.getElementById('navMenu');
+
+        menuToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+        });
+
+        // Close menu when a link is clicked
+        document.querySelectorAll('.nav-menu a').forEach(item => {
+            item.addEventListener('click', () => {
+                if (navMenu.classList.contains('active')) {
+                    navMenu.classList.remove('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
